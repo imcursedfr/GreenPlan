@@ -1,0 +1,488 @@
+@import 'tailwindcss';
+
+/* ── Design tokens (semantic + module accents) ──────────────────────────────
+   Every component consumes these variables; themes only redefine them, so a
+   theme change restyles the whole app without touching component classes.   */
+
+:root {
+  /* Surfaces & text */
+  --surface-page: #f6f8f6;
+  --surface-card: #ffffff;
+  --surface-muted: #eef2ee;
+  --surface-hover: #f1f5f1;
+  --text-strong: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+
+  /* Brand (module-independent) */
+  --brand: #059669;
+  --brand-strong: #047857;
+  --brand-soft: #d1fae5;
+  --brand-softer: #ecfdf5;
+  --brand-text: #065f46;
+  --brand-contrast: #ffffff;
+  --ring: #059669;
+
+  /* Accents */
+  --solar: #d97706;
+  --solar-soft: #fef3c7;
+  --aqua: #0891b2;
+  --aqua-soft: #cffafe;
+  --skye: #0284c7;
+  --skye-soft: #e0f2fe;
+  --lime: #65a30d;
+  --lime-soft: #ecfccb;
+
+  /* Chart palette — recharts reads these at render time */
+  --chart-1: #059669;
+  --chart-2: #0891b2;
+  --chart-3: #d97706;
+  --chart-4: #0284c7;
+  --chart-5: #65a30d;
+  --chart-6: #7c3aed;
+  --chart-grid: #e2e8f0;
+
+  /* Borders & shadows */
+  --border: rgb(15 23 42 / 0.1);
+  --border-strong: rgb(15 23 42 / 0.16);
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 16px -4px rgb(15 23 42 / 0.08);
+  --shadow-card-hover: 0 2px 4px rgb(15 23 42 / 0.05), 0 12px 32px -8px rgb(15 23 42 / 0.16);
+
+  /* Decorative gradients (landing, theme previews) */
+  --hero-glow-1: rgb(16 185 129 / 0.14);
+  --hero-glow-2: rgb(34 211 238 / 0.1);
+  --grid-line: rgb(15 23 42 / 0.05);
+
+  /* Runtime (set by ThemeProvider on switch) */
+  --theme-duration: 260ms;
+  --theme-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+ * Themes. Each block only overrides tokens — components adapt automatically.
+ * Colors were chosen for WCAG-AA text contrast against their surfaces.
+ */
+
+/* ── Terra: warm, earthy, organic ── */
+[data-theme='terra'] {
+  --surface-page: #f7f4ef;
+  --surface-card: #fffdf9;
+  --surface-muted: #f0e9df;
+  --surface-hover: #f3ede3;
+  --text-strong: #292018;
+  --text-body: #4a4038;
+  --text-muted: #857567;
+  --text-faint: #a99a8c;
+  --brand: #b45309;
+  --brand-strong: #92400e;
+  --brand-soft: #fde8cd;
+  --brand-softer: #fef6ec;
+  --brand-text: #7c3a0c;
+  --brand-contrast: #fffaf3;
+  --ring: #b45309;
+  --solar: #c2410c;
+  --solar-soft: #ffe9d5;
+  --aqua: #0e7490;
+  --aqua-soft: #d5f0f5;
+  --skye: #047857;
+  --skye-soft: #d9f2e5;
+  --lime: #4d7c0f;
+  --lime-soft: #e8f4d3;
+  --chart-1: #b45309;
+  --chart-2: #0e7490;
+  --chart-3: #c2410c;
+  --chart-4: #047857;
+  --chart-5: #4d7c0f;
+  --chart-6: #92400e;
+  --chart-grid: #e7ded2;
+  --border: rgb(64 48 34 / 0.12);
+  --border-strong: rgb(64 48 34 / 0.2);
+  --hero-glow-1: rgb(180 83 9 / 0.12);
+  --hero-glow-2: rgb(13 148 136 / 0.09);
+  --grid-line: rgb(64 48 34 / 0.06);
+}
+
+/* ── Ocean: clean coastal climate-tech ── */
+[data-theme='ocean'] {
+  --surface-page: #f3f8fb;
+  --surface-card: #fdfeff;
+  --surface-muted: #e3eef6;
+  --surface-hover: #eaf3f9;
+  --text-strong: #0b2237;
+  --text-body: #2a4a63;
+  --text-muted: #5b7f9a;
+  --text-faint: #8fb0c4;
+  --brand: #0369a1;
+  --brand-strong: #075985;
+  --brand-soft: #d3ecfb;
+  --brand-softer: #eff8fd;
+  --brand-text: #0c4a6e;
+  --brand-contrast: #ffffff;
+  --ring: #0369a1;
+  --solar: #b45309;
+  --solar-soft: #fdeecd;
+  --aqua: #0e7490;
+  --aqua-soft: #d3f1f7;
+  --skye: #1d4ed8;
+  --skye-soft: #dfe8fd;
+  --lime: #15803d;
+  --lime-soft: #dbf3e3;
+  --chart-1: #0369a1;
+  --chart-2: #0e7490;
+  --chart-3: #b45309;
+  --chart-4: #1d4ed8;
+  --chart-5: #15803d;
+  --chart-6: #7c3aed;
+  --chart-grid: #d8e6f0;
+  --border: rgb(11 60 94 / 0.12);
+  --border-strong: rgb(11 60 94 / 0.2);
+  --hero-glow-1: rgb(2 132 199 / 0.13);
+  --hero-glow-2: rgb(6 182 212 / 0.1);
+  --grid-line: rgb(11 60 94 / 0.055);
+}
+
+/* ── Forest: deep, grounded sustainability ── */
+[data-theme='forest'] {
+  --surface-page: #eef4ee;
+  --surface-card: #fbfdfb;
+  --surface-muted: #e0eae0;
+  --surface-hover: #e7f0e7;
+  --text-strong: #122416;
+  --text-body: #2f4a36;
+  --text-muted: #5d7a64;
+  --text-faint: #8aa691;
+  --brand: #166534;
+  --brand-strong: #14532d;
+  --brand-soft: #d3ecd9;
+  --brand-softer: #eff7f0;
+  --brand-text: #14532d;
+  --brand-contrast: #ffffff;
+  --ring: #166534;
+  --solar: #b45309;
+  --solar-soft: #fbe9cd;
+  --aqua: #0f766e;
+  --aqua-soft: #d2f0ec;
+  --skye: #0369a1;
+  --skye-soft: #d8ebf8;
+  --lime: #4d7c0f;
+  --lime-soft: #e6f2d0;
+  --chart-1: #166534;
+  --chart-2: #0f766e;
+  --chart-3: #b45309;
+  --chart-4: #0369a1;
+  --chart-5: #4d7c0f;
+  --chart-6: #78350f;
+  --chart-grid: #d5e3d6;
+  --border: rgb(18 48 24 / 0.14);
+  --border-strong: rgb(18 48 24 / 0.22);
+  --hero-glow-1: rgb(22 101 52 / 0.13);
+  --hero-glow-2: rgb(15 118 110 / 0.09);
+  --grid-line: rgb(18 48 24 / 0.06);
+}
+
+/* ── Solar: bright, energetic renewables ── */
+[data-theme='solar'] {
+  --surface-page: #fdf9f1;
+  --surface-card: #fffefb;
+  --surface-muted: #f7ecd8;
+  --surface-hover: #f9f1e2;
+  --text-strong: #2b1c07;
+  --text-body: #574321;
+  --text-muted: #8a744f;
+  --text-faint: #b3a284;
+  --brand: #d97706;
+  --brand-strong: #b45309;
+  --brand-soft: #fde9c4;
+  --brand-softer: #fef6e7;
+  --brand-text: #92400e;
+  --brand-contrast: #fffbeb;
+  --ring: #d97706;
+  --solar: #ea580c;
+  --solar-soft: #fee9d8;
+  --aqua: #0891b2;
+  --aqua-soft: #d6f2f9;
+  --skye: #2563eb;
+  --skye-soft: #dfe8fd;
+  --lime: #65a30d;
+  --lime-soft: #edf7d2;
+  --chart-1: #d97706;
+  --chart-2: #0891b2;
+  --chart-3: #ea580c;
+  --chart-4: #2563eb;
+  --chart-5: #65a30d;
+  --chart-6: #a16207;
+  --chart-grid: #ecdfc8;
+  --border: rgb(75 54 15 / 0.13);
+  --border-strong: rgb(75 54 15 / 0.2);
+  --hero-glow-1: rgb(217 119 6 / 0.16);
+  --hero-glow-2: rgb(234 88 12 / 0.1);
+  --grid-line: rgb(75 54 15 / 0.06);
+}
+
+/* ── Midnight: premium dark climate-tech ── */
+[data-theme='midnight'] {
+  --surface-page: #0a1220;
+  --surface-card: #101b2d;
+  --surface-muted: #182639;
+  --surface-hover: #1c2b40;
+  --text-strong: #f1f5f9;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-faint: #64748b;
+  --brand: #34d399;
+  --brand-strong: #6ee7b7;
+  --brand-soft: #0c3b30;
+  --brand-softer: #0a2c25;
+  --brand-text: #6ee7b7;
+  --brand-contrast: #052e22;
+  --ring: #34d399;
+  --solar: #fbbf24;
+  --solar-soft: #3a2c0a;
+  --aqua: #22d3ee;
+  --aqua-soft: #0a3340;
+  --skye: #38bdf8;
+  --skye-soft: #0c2d44;
+  --lime: #a3e635;
+  --lime-soft: #26360b;
+  --chart-1: #34d399;
+  --chart-2: #22d3ee;
+  --chart-3: #fbbf24;
+  --chart-4: #38bdf8;
+  --chart-5: #a3e635;
+  --chart-6: #c084fc;
+  --chart-grid: #24334a;
+  --border: rgb(148 163 184 / 0.16);
+  --border-strong: rgb(148 163 184 / 0.26);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 20px -6px rgb(0 0 0 / 0.5);
+  --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 0.45), 0 14px 36px -10px rgb(0 0 0 / 0.6);
+  --hero-glow-1: rgb(52 211 153 / 0.13);
+  --hero-glow-2: rgb(34 211 238 / 0.1);
+  --grid-line: rgb(148 163 184 / 0.07);
+}
+
+/* ── System: follows the OS light/dark preference ── */
+@media (prefers-color-scheme: dark) {
+  [data-theme='system']:not([data-resolved-theme='light']):not([data-theme-locked='true']) {
+    --surface-page: #0a1220;
+    --surface-card: #101b2d;
+    --surface-muted: #182639;
+    --surface-hover: #1c2b40;
+    --text-strong: #f1f5f9;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-faint: #64748b;
+    --brand: #34d399;
+    --brand-strong: #6ee7b7;
+    --brand-soft: #0c3b30;
+    --brand-softer: #0a2c25;
+    --brand-text: #6ee7b7;
+    --brand-contrast: #052e22;
+    --ring: #34d399;
+    --solar: #fbbf24;
+    --solar-soft: #3a2c0a;
+    --aqua: #22d3ee;
+    --aqua-soft: #0a3340;
+    --skye: #38bdf8;
+    --skye-soft: #0c2d44;
+    --lime: #a3e635;
+    --lime-soft: #26360b;
+    --chart-1: #34d399;
+    --chart-2: #22d3ee;
+    --chart-3: #fbbf24;
+    --chart-4: #38bdf8;
+    --chart-5: #a3e635;
+    --chart-6: #c084fc;
+    --chart-grid: #24334a;
+    --border: rgb(148 163 184 / 0.16);
+    --border-strong: rgb(148 163 184 / 0.26);
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 20px -6px rgb(0 0 0 / 0.5);
+    --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 0.45), 0 14px 36px -10px rgb(0 0 0 / 0.6);
+    --hero-glow-1: rgb(52 211 153 / 0.13);
+    --hero-glow-2: rgb(34 211 238 / 0.1);
+    --grid-line: rgb(148 163 184 / 0.07);
+  }
+}
+
+@theme inline {
+  --color-surface-page: var(--surface-page);
+  --color-surface-card: var(--surface-card);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-hover: var(--surface-hover);
+  --color-text-strong: var(--text-strong);
+  --color-text-body: var(--text-body);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-softer: var(--brand-softer);
+  --color-brand-text: var(--brand-text);
+  --color-brand-contrast: var(--brand-contrast);
+  --color-ring: var(--ring);
+  --color-solar: var(--solar);
+  --color-solar-soft: var(--solar-soft);
+  --color-aqua: var(--aqua);
+  --color-aqua-soft: var(--aqua-soft);
+  --color-skye: var(--skye);
+  --color-skye-soft: var(--skye-soft);
+  --color-lime: var(--lime);
+  --color-lime-soft: var(--lime-soft);
+  --color-border-base: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-grid-line: var(--grid-line);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Sora', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    transition-property: color, background-color, border-color, fill, stroke, box-shadow;
+    transition-duration: var(--theme-duration);
+    transition-timing-function: var(--theme-ease);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--surface-page);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: var(--brand-soft);
+    color: var(--brand-text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 8px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-faint);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  /* Firefox: slim, themed */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .bg-glow {
+    background:
+      radial-gradient(60% 60% at 50% 20%, var(--hero-glow-1), transparent 70%),
+      radial-gradient(40% 40% at 80% 60%, var(--hero-glow-2), transparent 70%);
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(100deg, var(--brand) 10%, var(--aqua) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  /* Numeric inputs: hide spinners — typing is the precise control. */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  /* Range slider: themed track + thumb, consistent across engines. */
+  input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--surface-muted);
+    outline: none;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--brand);
+    border: 3px solid var(--surface-card);
+    box-shadow: 0 1px 4px rgb(15 23 42 / 0.25);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type='range']::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+    box-shadow: 0 2px 8px rgb(15 23 42 / 0.3);
+  }
+  input[type='range']::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--brand);
+    border: 3px solid var(--surface-card);
+    box-shadow: 0 1px 4px rgb(15 23 42 / 0.25);
+    cursor: pointer;
+  }
+  input[type='range']::-moz-range-track {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--surface-muted);
+  }
+
+  /* Disable the global color transition during a theme swap; GSAP tween does
+     the work, then the flag is removed. */
+  .theme-transitioning *,
+  .theme-transitioning *::before,
+  .theme-transitioning *::after {
+    transition-property: none !important;
+  }
+}
