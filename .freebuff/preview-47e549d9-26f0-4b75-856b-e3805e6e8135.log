@@ -9,3 +9,7 @@
   [32m➜[39m  [1mNetwork[22m: [36mhttp://172.16.0.2:[1m5173[22m/[39m
   [32m➜[39m  [1mNetwork[22m: [36mhttp://172.18.231.1:[1m5173[22m/[39m
 [2m10:35:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css, /src/components/auth/AuthForm.tsx[22m
+[2m11:14:31 pm[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m11:14:31 pm[22m [36m[1m[vite][22m[39m server restarted.
+[2m11:14:33 pm[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m11:14:33 pm[22m [36m[1m[vite][22m[39m server restarted.
