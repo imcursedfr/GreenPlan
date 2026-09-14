@@ -1,0 +1,36 @@
+
+> greenplan@0.1.0 dev
+> vite
+
+Port 5173 is in use, trying another one...
+
+  [32m[1mVITE[22m v7.3.6[39m  [2mready in [0m[1m350[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5174[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.18.230.169:[1m5174[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m12:12:39 am[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m12:12:39 am[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:12:40 am[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m12:12:40 am[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:19:00 am[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+X [ERROR] Expected "{" but found "` + \"`"
+
+    vite.config.ts:70:35:
+      70 │     configurePreviewServer(server) ` + "`" + `{
+         │                                    ~~~~~~
+         ╵                                    {
+
+[31mfailed to load config from C:\Users\priya\OneDrive\Documents\sustainable-home-planner\GreenPlan\vite.config.ts[39m
+[2m12:19:00 am[22m [31m[1m[vite][22m[39m Build failed with 1 error:
+vite.config.ts:70:35: ERROR: Expected "{" but found "` + \"`"
+[2m12:19:00 am[22m [31m[1m[vite][22m[39m server restart failed
+[2m12:19:15 am[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+[2m12:19:15 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
+[2m12:19:15 am[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:20:10 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m12:20:17 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/lib/env.ts[22m
+[2m12:20:27 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css[22m
+[2m12:20:51 am[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+[2m12:20:51 am[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:21:49 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css[22m

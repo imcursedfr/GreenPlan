@@ -5,6 +5,7 @@
  * else. That single choke point is where PRISM instrumentation will attach.
  */
 export { runAiTask, onAiCall, type AiCallLog, type RunAiTaskOptions } from './client'
+export { initPrismTracing, type PrismTracePayload } from './prism'
 export {
   personalizeRecommendations,
   explainAssessment,

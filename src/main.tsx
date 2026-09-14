@@ -7,7 +7,12 @@ import { ThemeProvider } from './theme/ThemeProvider'
 import { ProfileProvider } from './hooks/useProfile'
 import { AuthProvider } from './hooks/useAuth'
 import { HomesProvider } from './hooks/useHomes'
+import { initPrismTracing } from './ai/prism'
 import './styles/index.css'
+
+// PRISM observability: one sink, registered once, receives every AiCallLog
+// the AI funnel emits. Failures inside the sink never affect the app.
+initPrismTracing()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

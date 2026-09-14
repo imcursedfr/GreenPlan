@@ -3,13 +3,13 @@
 > vite
 
 
-  [32m[1mVITE[22m v7.3.6[39m  [2mready in [0m[1m557[22m[2m[0m ms[22m
+  [32m[1mVITE[22m v7.3.6[39m  [2mready in [0m[1m406[22m[2m[0m ms[22m
 
   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
-  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.16.0.2:[1m5173[22m/[39m
-  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.18.231.1:[1m5173[22m/[39m
-[2m10:35:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css, /src/components/auth/AuthForm.tsx[22m
-[2m11:14:31 pm[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
-[2m11:14:31 pm[22m [36m[1m[vite][22m[39m server restarted.
-[2m11:14:33 pm[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
-[2m11:14:33 pm[22m [36m[1m[vite][22m[39m server restarted.
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.18.230.169:[1m5173[22m/[39m
+[2m12:25:16 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/ai/prism.ts[22m
+[2m12:35:37 am[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+[2m12:35:37 am[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:35:42 am[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m12:35:42 am[22m [36m[1m[vite][22m[39m server restarted.
+[2m12:47:04 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/lib/env.ts[22m

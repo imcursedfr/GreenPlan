@@ -31,6 +31,10 @@ export const env = {
   get aiApiKey() {
     return read('VITE_AI_API_KEY')
   },
+  // NOTE: PRISMTRACE_* credentials are intentionally NOT accessible here.
+  // They are server-side only (vite.config.ts proxy / api/prism/trace.ts,
+  // read from process.env). The browser posts credential-free traces to the
+  // same-origin proxy, which injects them. Never add them to this object.
 } as const
 
 export function requireSupabaseEnv(): { url: string; anonKey: string } {

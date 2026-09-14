@@ -30,7 +30,7 @@ import { useProfile } from '../hooks/useProfile'
 import { useHomes } from '../hooks/useHomes'
 import { searchLocation, type GeocodedLocation } from '../services/geocodingService'
 import { regionFromCountry, formatRegionCurrency } from '../lib/region'
-import { convertToUsd, fxPerUsd } from '../lib/format'
+import { fxPerUsd } from '../lib/format'
 import type { PlannerProfile } from '../types/profile'
 import type {
   ClimateZone,
@@ -198,21 +198,17 @@ export default function OnboardingPage() {
         roofOrientation: draft.roofOrientation,
         coolingUsageLevel: draft.coolingUsageLevel,
         existingMeasures: draft.existingMeasures,
-        // Stored USD-canonical; converted back at display time.
-        sustainabilityBudget:
-          draft.sustainabilityBudget !== undefined
-            ? convertToUsd(draft.sustainabilityBudget, region.currency)
-            : undefined,
+        // The NumberSlider's fromDisplay already converted the typed
+        // regional amount to USD-canonical; do NOT convert again.
+        sustainabilityBudget: draft.sustainabilityBudget,
         budgetCurrency: region.currency,
       },
       energy: {
         monthlyElectricityKwh: draft.monthlyElectricityKwh,
-        // Bill amount is stored USD-canonical so engine tariff math stays
-        // consistent; convert from the user's typed regional currency.
-        monthlyBillAmount:
-          draft.monthlyBillAmount !== undefined
-            ? convertToUsd(draft.monthlyBillAmount, region.currency)
-            : undefined,
+        // The NumberSlider's fromDisplay already converted the typed
+        // regional amount to USD-canonical so engine tariff math stays
+        // consistent; do NOT convert again here.
+        monthlyBillAmount: draft.monthlyBillAmount,
         currency: region.currency,
       },
       water: {
